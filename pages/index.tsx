@@ -8,8 +8,6 @@ import { wrapper } from "@/store/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
-//test
-
 const Home: NextPage = () => {
   // const books = useSelector(
   //   (state: { books: { library: Book[] } }) => state.books.library
