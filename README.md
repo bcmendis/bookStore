@@ -1,4 +1,4 @@
-##Overview
+## Overview
 
 This is a web application that simulates an online bookstore, allowing users to perform various actions such as adding books, updating book details, and deleting books from their collection.
 
@@ -6,9 +6,9 @@ The project leverages server-side rendering (SSR) to fetch, or in this case use 
 
 ## Tech Stack
 
--[Next.js](https://nextjs.org/docs): A React framework for building server-side rendered (SSR) web applications.
--[Redux/Redux toolkit](https://redux-toolkit.js.org/introduction/getting-started): : A predictable state management library for JavaScript applications.
--[next-redux-wrapper](https://github.com/kirill-konshin/next-redux-wrapper): A wrapper library that integrates Redux with Next.js, simplifying the setup process.
+- [Next.js](https://nextjs.org/docs): A React framework for building server-side rendered (SSR) web applications.
+- [Redux/Redux toolkit](https://redux-toolkit.js.org/introduction/getting-started): : A predictable state management library for JavaScript applications.
+- [next-redux-wrapper](https://github.com/kirill-konshin/next-redux-wrapper): A wrapper library that integrates Redux with Next.js, simplifying the setup process.
 
 ## Getting Started
 
