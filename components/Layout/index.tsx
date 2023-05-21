@@ -21,7 +21,7 @@ const Layout: FC<MyProps> = (props) => {
         className="w-screen top-0 h-[8rem] sm:h-[15rem] object-cover overflow-hidden"
       />
       <div
-        className={`flex flex-col w-[90%] items-center sm:w-[70%] py-5 sm:py-10 ${inter.className}`}
+        className={`flex flex-col w-[90%] items-center sm:w-[80%] py-5 sm:py-10 ${inter.className}`}
       >
         {props.children}
       </div>

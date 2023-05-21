@@ -1,5 +1,5 @@
-import { useState, ChangeEvent, FormEvent } from "react";
 import type { GetServerSideProps } from "next";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { updateBook } from "@/store/bookSlice";
@@ -22,7 +22,7 @@ const AddBookPage = (props: Book) => {
   ) => {
     let { name, value } = e.target;
     if (name === "price") {
-      const numValue = Number(value);
+      const numValue = Math.abs(Number(value));
       setUpdateBookData((prevState) => ({
         ...prevState,
         [name]: numValue,
@@ -35,18 +35,22 @@ const AddBookPage = (props: Book) => {
     }
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(updateBook(updateBookData));
+    router.push("/");
+  };
+  
+  const handleCancel = () => {
     router.push("/");
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-y-2 justify-center items-center w-full sm:w-[80%] bg-slate-500 p-4 sm:p-10 rounded-lg text-sm sm:text-xl shadow-lg"
+      onSubmit={submitHandler}
+      className="flex flex-col gap-y-2 justify-center items-center w-full lg:w-[90%] max-w-[1000px] bg-slate-500 p-4 sm:p-10 rounded-lg text-sm sm:text-lg lg:text-xl shadow-lg"
     >
-      <div className="grid grid-cols-1 w-full gap-y-2 sm:grid-cols-[20%_80%] items-center p-5">
+      <div className="grid grid-cols-1 w-full gap-y-2 lg:grid-cols-[20%_80%] items-center p-5">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -60,7 +64,6 @@ const AddBookPage = (props: Book) => {
         <label htmlFor="price">Price ($):</label>
         <input
           type="number"
-          step=".01"
           id="price"
           name="price"
           value={updateBookData.price}
@@ -74,6 +77,7 @@ const AddBookPage = (props: Book) => {
           name="category"
           value={updateBookData.category}
           onChange={handleChange}
+          maxLength={10}
           required
           className="text-red-500 p-2 rounded-sm sm:rounded-lg font-semibold"
         />
@@ -88,12 +92,21 @@ const AddBookPage = (props: Book) => {
           className="text-red-500 p-2 rounded-sm sm:rounded-lg font-semibold"
         ></textarea>
       </div>
-      <button
-        type="submit"
-        className="bg-black p-4 rounded-full hover:text-orange-300"
-      >
-        Update Book
-      </button>
+      <div className="flex flex-col lg:flex-row justify-between items-center w-full md:w-[60%] px-5 gap-3">
+        <button
+          type="submit"
+          className="w-full lg:max-w-[200px] bg-black p-4 rounded-full hover:text-orange-300"
+        >
+          Update Book
+        </button>
+        <button
+          type="button"
+          onClick={handleCancel}
+          className="w-full lg:max-w-[200px] bg-black p-4 rounded-full hover:text-orange-300"
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 };

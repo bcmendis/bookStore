@@ -1,5 +1,4 @@
 import { BiBookAdd } from "react-icons/bi";
-
 import Link from "next/link";
 
 const Navigation = () => {
